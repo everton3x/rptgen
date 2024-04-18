@@ -42,6 +42,16 @@ abstract class ReportBase {
             $spreadsheet->removeSheetByIndex($sheetIndex);
         }
     }
+    
+    protected function readSql(string $file, string|int ...$params): float {
+        $sql = file_get_contents("./sql/$file.sql");
+        if($sql === false) trigger_error("$file não encontrado!", E_USER_ERROR);
+        $query = sprintf($sql, ...$params);
+//        echo $query, PHP_EOL;
+        $result = $this->con->query($query);
+//        var_dump(pg_fetch_all_columns($result, 0));exit();
+        return round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+    }
 
     abstract public function run(): void;
 

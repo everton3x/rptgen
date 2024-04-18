@@ -7,6 +7,7 @@ date_default_timezone_set('America/Sao_Paulo');
 require 'vendor/autoload.php';
 
 $tpl_file = 'tpl/relatorios fiscais v2024.99.00.xlsx';
+$tpl_file_dcasp = 'tpl/dcasp v2024.01.99.xlsx';
 $dsn = 'host=localhost port=5432 dbname=pmidd user=postgres password=lise890';
 $output_dir = 'C:\\Users\\Everton\\Desktop';
 
@@ -91,7 +92,7 @@ switch ($rptsel){
         require 'rpt/pessoal.php';
         break;
     case 3:
-        trigger_error('Não implementado ainda!', E_USER_ERROR);
+        require 'rpt/dcasp.php';
         break;
 }
 
