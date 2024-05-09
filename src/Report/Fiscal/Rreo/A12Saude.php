@@ -256,14 +256,30 @@ final class A12Saude extends RreoBase {
                     WHERE REMESSA = %s
                             AND FUNCAO = 10
                             AND SUBFUNCAO NOT IN (301, 302, 303, 304, 305, 306)
-                            AND CODIGO_ACOMPANHAMENTO_ORCAMENTARIO != 1002
+                            --AND CODIGO_ACOMPANHAMENTO_ORCAMENTARIO != 1002
                             AND ANO_EMPENHO = %d
                             AND RUBRICA LIKE '%s'"
         ;
         $query = sprintf($sql, $this->remessa, $ano, $ndo);
         $result = $this->con->query($query);
-        return round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+        $vl1 = round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+        return (float) round($vl1 - $this->pagoASPSOutrasSubfuncaoEDespesa($ndo), 2);
     }
+    // private function pagoNaoASPSOutrasSubfuncaoEDespesa(string $ndo): float {
+    //      $ano = (int) substr($this->remessa, 0, 4);
+    //     $sql = "SELECT SUM(VALOR_PAGAMENTO)::decimal
+    //                 FROM PAD.PAGAMENTO
+    //                 WHERE REMESSA = %s
+    //                         AND FUNCAO = 10
+    //                         AND SUBFUNCAO NOT IN (301, 302, 303, 304, 305, 306)
+    //                         AND CODIGO_ACOMPANHAMENTO_ORCAMENTARIO != 1002
+    //                         AND ANO_EMPENHO = %d
+    //                         AND RUBRICA LIKE '%s'"
+    //     ;
+    //     $query = sprintf($sql, $this->remessa, $ano, $ndo);
+    //     $result = $this->con->query($query);
+    //     return round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+    // }
     
     private function pagoNaoASPSPorSubfuncaoEDespesa(int $sf, string $ndo): float {
         $ano = (int) substr($this->remessa, 0, 4);
@@ -272,14 +288,30 @@ final class A12Saude extends RreoBase {
                     WHERE REMESSA = %s
                             AND FUNCAO = 10
                             AND SUBFUNCAO = %d
-                            AND CODIGO_ACOMPANHAMENTO_ORCAMENTARIO != 1002
+                            --AND CODIGO_ACOMPANHAMENTO_ORCAMENTARIO != 1002
                             AND ANO_EMPENHO = %d
                             AND RUBRICA LIKE '%s'"
         ;
         $query = sprintf($sql, $this->remessa, $sf, $ano, $ndo);
         $result = $this->con->query($query);
-        return round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+        $vl1 = round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+        return (float) round($vl1 - $this->pagoASPSPorSubfuncaoEDespesa($sf, $ndo), 2);
     }
+    // private function pagoNaoASPSPorSubfuncaoEDespesa(int $sf, string $ndo): float {
+    //     $ano = (int) substr($this->remessa, 0, 4);
+    //     $sql = "SELECT SUM(VALOR_PAGAMENTO)::decimal
+    //                 FROM PAD.PAGAMENTO
+    //                 WHERE REMESSA = %s
+    //                         AND FUNCAO = 10
+    //                         AND SUBFUNCAO = %d
+    //                         AND CODIGO_ACOMPANHAMENTO_ORCAMENTARIO != 1002
+    //                         AND ANO_EMPENHO = %d
+    //                         AND RUBRICA LIKE '%s'"
+    //     ;
+    //     $query = sprintf($sql, $this->remessa, $sf, $ano, $ndo);
+    //     $result = $this->con->query($query);
+    //     return round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+    // }
     
     private function liquidadoNaoASPSOutrasSubfuncaoEDespesa(string $ndo): float {
          $ano = (int) substr($this->remessa, 0, 4);
@@ -288,14 +320,30 @@ final class A12Saude extends RreoBase {
                     WHERE REMESSA = %s
                             AND FUNCAO = 10
                             AND SUBFUNCAO NOT IN (301, 302, 303, 304, 305, 306)
-                            AND CODIGO_ACOMPANHAMENTO_ORCAMENTARIO != 1002
+                            --AND CODIGO_ACOMPANHAMENTO_ORCAMENTARIO != 1002
                             AND ANO_EMPENHO = %d
                             AND RUBRICA LIKE '%s'"
         ;
         $query = sprintf($sql, $this->remessa, $ano, $ndo);
         $result = $this->con->query($query);
-        return round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+        $vl1 = round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+        return (float) round($vl1 - $this->liquidadoASPSOutrasSubfuncaoEDespesa($ndo), 2);
     }
+    // private function liquidadoNaoASPSOutrasSubfuncaoEDespesa(string $ndo): float {
+    //      $ano = (int) substr($this->remessa, 0, 4);
+    //     $sql = "SELECT SUM(VALOR_LIQUIDACAO)::decimal
+    //                 FROM PAD.LIQUIDACAO
+    //                 WHERE REMESSA = %s
+    //                         AND FUNCAO = 10
+    //                         AND SUBFUNCAO NOT IN (301, 302, 303, 304, 305, 306)
+    //                         AND CODIGO_ACOMPANHAMENTO_ORCAMENTARIO != 1002
+    //                         AND ANO_EMPENHO = %d
+    //                         AND RUBRICA LIKE '%s'"
+    //     ;
+    //     $query = sprintf($sql, $this->remessa, $ano, $ndo);
+    //     $result = $this->con->query($query);
+    //     return round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+    // }
     
     private function liquidadoNaoASPSPorSubfuncaoEDespesa(int $sf, string $ndo): float {
         $ano = (int) substr($this->remessa, 0, 4);
@@ -304,14 +352,30 @@ final class A12Saude extends RreoBase {
                     WHERE REMESSA = %s
                             AND FUNCAO = 10
                             AND SUBFUNCAO = %d
-                            AND CODIGO_ACOMPANHAMENTO_ORCAMENTARIO != 1002
+                            --AND CODIGO_ACOMPANHAMENTO_ORCAMENTARIO != 1002
                             AND ANO_EMPENHO = %d
                             AND RUBRICA LIKE '%s'"
         ;
         $query = sprintf($sql, $this->remessa, $sf, $ano, $ndo);
         $result = $this->con->query($query);
-        return round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+        $vl1 = round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+        return (float) round($vl1 - $this->liquidadoASPSPorSubfuncaoEDespesa($sf, $ndo), 2);
     }
+    // private function liquidadoNaoASPSPorSubfuncaoEDespesa(int $sf, string $ndo): float {
+    //     $ano = (int) substr($this->remessa, 0, 4);
+    //     $sql = "SELECT SUM(VALOR_LIQUIDACAO)::decimal
+    //                 FROM PAD.LIQUIDACAO
+    //                 WHERE REMESSA = %s
+    //                         AND FUNCAO = 10
+    //                         AND SUBFUNCAO = %d
+    //                         AND CODIGO_ACOMPANHAMENTO_ORCAMENTARIO != 1002
+    //                         AND ANO_EMPENHO = %d
+    //                         AND RUBRICA LIKE '%s'"
+    //     ;
+    //     $query = sprintf($sql, $this->remessa, $sf, $ano, $ndo);
+    //     $result = $this->con->query($query);
+    //     return round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+    // }
     
     private function empenhadoNaoASPSOutrasSubfuncaoEDespesa(string $ndo): float {
          $ano = (int) substr($this->remessa, 0, 4);
@@ -320,14 +384,30 @@ final class A12Saude extends RreoBase {
                     WHERE REMESSA = %s
                             AND FUNCAO = 10
                             AND SUBFUNCAO NOT IN (301, 302, 303, 304, 305, 306)
-                            AND CODIGO_ACOMPANHAMENTO_ORCAMENTARIO != 1002
+                            --AND CODIGO_ACOMPANHAMENTO_ORCAMENTARIO != 1002
                             AND ANO_EMPENHO = %d
                             AND RUBRICA LIKE '%s'"
         ;
         $query = sprintf($sql, $this->remessa, $ano, $ndo);
         $result = $this->con->query($query);
-        return round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+        $vl1 = round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+        return (float) round($vl1 - $this->empenhadoASPSOutrasSubfuncaoEDespesa($ndo), 2);
     }
+    // private function empenhadoNaoASPSOutrasSubfuncaoEDespesa(string $ndo): float {
+    //      $ano = (int) substr($this->remessa, 0, 4);
+    //     $sql = "SELECT SUM(VALOR_EMPENHO)::decimal
+    //                 FROM PAD.EMPENHO
+    //                 WHERE REMESSA = %s
+    //                         AND FUNCAO = 10
+    //                         AND SUBFUNCAO NOT IN (301, 302, 303, 304, 305, 306)
+    //                         AND CODIGO_ACOMPANHAMENTO_ORCAMENTARIO != 1002
+    //                         AND ANO_EMPENHO = %d
+    //                         AND RUBRICA LIKE '%s'"
+    //     ;
+    //     $query = sprintf($sql, $this->remessa, $ano, $ndo);
+    //     $result = $this->con->query($query);
+    //     return round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+    // }
     
     private function empenhadoNaoASPSPorSubfuncaoEDespesa(int $sf, string $ndo): float {
         $ano = (int) substr($this->remessa, 0, 4);
@@ -336,70 +416,143 @@ final class A12Saude extends RreoBase {
                     WHERE REMESSA = %s
                             AND FUNCAO = 10
                             AND SUBFUNCAO = %d
-                            AND CODIGO_ACOMPANHAMENTO_ORCAMENTARIO != 1002
+                            --AND CODIGO_ACOMPANHAMENTO_ORCAMENTARIO != 1002
                             AND ANO_EMPENHO = %d
                             AND RUBRICA LIKE '%s'"
         ;
         $query = sprintf($sql, $this->remessa, $sf, $ano, $ndo);
         $result = $this->con->query($query);
-        return round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+        $vl1 = round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+        return (float) round($vl1 - $this->empenhadoASPSPorSubfuncaoEDespesa($sf, $ndo), 2);
     }
+    // private function empenhadoNaoASPSPorSubfuncaoEDespesa(int $sf, string $ndo): float {
+    //     $ano = (int) substr($this->remessa, 0, 4);
+    //     $sql = "SELECT SUM(VALOR_EMPENHO)::decimal
+    //                 FROM PAD.EMPENHO
+    //                 WHERE REMESSA = %s
+    //                         AND FUNCAO = 10
+    //                         AND SUBFUNCAO = %d
+    //                         AND CODIGO_ACOMPANHAMENTO_ORCAMENTARIO != 1002
+    //                         AND ANO_EMPENHO = %d
+    //                         AND RUBRICA LIKE '%s'"
+    //     ;
+    //     $query = sprintf($sql, $this->remessa, $sf, $ano, $ndo);
+    //     $result = $this->con->query($query);
+    //     return round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+    // }
     
     private function dotacaoAtualizadaNaoASPSOutrasSubfuncaoEDespesa(string $ndo): float {
         $sql = "SELECT SUM(DOTACAO_ATUALIZADA)::decimal
                 FROM PAD.BAL_DESP
                 WHERE REMESSA = %d
                         AND FUNCAO = 10
-                        AND FONTE_RECURSO NOT IN (500, 502)
+                        --AND FONTE_RECURSO NOT IN (500, 502)
                         AND SUBFUNCAO NOT IN (301, 302, 303, 304, 305, 306)
                         AND ELEMENTO LIKE '%s'"
         ;
         $query = sprintf($sql, $this->remessa, $ndo);
         $result = $this->con->query($query);
-        return (float) round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+        $vl1 = (float) round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+        return (float) round($vl1 - $this->dotacaoAtualizadaASPSOutrasSubfuncaoEDespesa($ndo), 2);
     }
+    // private function dotacaoAtualizadaNaoASPSOutrasSubfuncaoEDespesa(string $ndo): float {
+    //     $sql = "SELECT SUM(DOTACAO_ATUALIZADA)::decimal
+    //             FROM PAD.BAL_DESP
+    //             WHERE REMESSA = %d
+    //                     AND FUNCAO = 10
+    //                     AND FONTE_RECURSO NOT IN (500, 502)
+    //                     AND SUBFUNCAO NOT IN (301, 302, 303, 304, 305, 306)
+    //                     AND ELEMENTO LIKE '%s'"
+    //     ;
+    //     $query = sprintf($sql, $this->remessa, $ndo);
+    //     $result = $this->con->query($query);
+    //     return (float) round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+    // }
     
     private function dotacaoAtualizadaNaoASPSPorSubfuncaoEDespesa(int $sf, string $ndo): float {
         $sql = "SELECT SUM(DOTACAO_ATUALIZADA)::decimal
                 FROM PAD.BAL_DESP
                 WHERE REMESSA = %d
                         AND FUNCAO = 10
-                        AND FONTE_RECURSO NOT IN (500, 502)
+                        --AND FONTE_RECURSO NOT IN (500, 502)
                         AND SUBFUNCAO = %d
                         AND ELEMENTO LIKE '%s'"
         ;
         $query = sprintf($sql, $this->remessa, $sf, $ndo);
         $result = $this->con->query($query);
-        return (float) round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+        $vl1 = (float) round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+        return (float) round($vl1 - $this->dotacaoAtualizadaASPSPorSubfuncaoEDespesa($sf, $ndo), 2);
     }
+    // private function dotacaoAtualizadaNaoASPSPorSubfuncaoEDespesa(int $sf, string $ndo): float {
+    //     $sql = "SELECT SUM(DOTACAO_ATUALIZADA)::decimal
+    //             FROM PAD.BAL_DESP
+    //             WHERE REMESSA = %d
+    //                     AND FUNCAO = 10
+    //                     AND FONTE_RECURSO NOT IN (500, 502)
+    //                     AND SUBFUNCAO = %d
+    //                     AND ELEMENTO LIKE '%s'"
+    //     ;
+    //     $query = sprintf($sql, $this->remessa, $sf, $ndo);
+    //     $result = $this->con->query($query);
+    //     return (float) round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+    // }
     
     private function dotacaoInicialNaoASPSOutrasSubfuncaoEDespesa(string $ndo): float {
         $sql = "SELECT SUM(DOTACAO_INICIAL)::decimal
                 FROM PAD.BAL_DESP
                 WHERE REMESSA = %d
                         AND FUNCAO = 10
-                        AND FONTE_RECURSO NOT IN (500, 502)
+                        --AND FONTE_RECURSO NOT IN (500, 502)
                         AND SUBFUNCAO NOT IN (301, 302, 303, 304, 305, 306)
                         AND ELEMENTO LIKE '%s'"
         ;
         $query = sprintf($sql, $this->remessa, $ndo);
         $result = $this->con->query($query);
-        return (float) round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+        $vl1 = (float) round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+        return (float) round($vl1 - $this->dotacaoInicialASPSOutrasSubfuncaoEDespesa($ndo), 2);
     }
+    // private function dotacaoInicialNaoASPSOutrasSubfuncaoEDespesa(string $ndo): float {
+    //     $sql = "SELECT SUM(DOTACAO_INICIAL)::decimal
+    //             FROM PAD.BAL_DESP
+    //             WHERE REMESSA = %d
+    //                     AND FUNCAO = 10
+    //                     AND FONTE_RECURSO NOT IN (500, 502)
+    //                     AND SUBFUNCAO NOT IN (301, 302, 303, 304, 305, 306)
+    //                     AND ELEMENTO LIKE '%s'"
+    //     ;
+    //     $query = sprintf($sql, $this->remessa, $ndo);
+    //     $result = $this->con->query($query);
+    //     return (float) round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+    // }
     
     private function dotacaoInicialNaoASPSPorSubfuncaoEDespesa(int $sf, string $ndo): float {
         $sql = "SELECT SUM(DOTACAO_INICIAL)::decimal
                 FROM PAD.BAL_DESP
                 WHERE REMESSA = %d
                         AND FUNCAO = 10
-                        AND FONTE_RECURSO NOT IN (500, 502)
+                        --AND FONTE_RECURSO NOT IN (500, 502)
                         AND SUBFUNCAO = %d
                         AND ELEMENTO LIKE '%s'"
         ;
         $query = sprintf($sql, $this->remessa, $sf, $ndo);
         $result = $this->con->query($query);
-        return (float) round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+        $vl1 = round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+
+        return (float) round($vl1 - $this->dotacaoInicialASPSPorSubfuncaoEDespesa($sf, $ndo), 2);
     }
+    // private function dotacaoInicialNaoASPSPorSubfuncaoEDespesa(int $sf, string $ndo): float {
+    //     $sql = "SELECT SUM(DOTACAO_INICIAL)::decimal
+    //             FROM PAD.BAL_DESP
+    //             WHERE REMESSA = %d
+    //                     AND FUNCAO = 10
+    //                     AND FONTE_RECURSO NOT IN (500, 502)
+    //                     AND SUBFUNCAO = %d
+    //                     AND ELEMENTO LIKE '%s'"
+    //     ;
+    //     $query = sprintf($sql, $this->remessa, $sf, $ndo);
+    //     $result = $this->con->query($query);
+    //     return (float) round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+    // }
     
     private function arrecadacaoReceitaPorFonte(int $fr): float {
         $sql = "SELECT SUM(RECEITA_REALIZADA)::decimal
