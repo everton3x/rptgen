@@ -968,9 +968,13 @@ final class A8Educacao extends RreoBase {
                             AND FUNCAO = 12
                             AND FONTE_RECURSO IN (500, 502)
                             AND CODIGO_ACOMPANHAMENTO_ORCAMENTARIO = 1001
-                            AND DATA_PAGAMENTO BETWEEN '%s' AND '%s'"
+                            AND DATA_PAGAMENTO BETWEEN '%s' AND '%s'
+                            AND RUBRICA NOT LIKE '__71%%'
+                            AND RUBRICA NOT LIKE '339046%%'
+                            AND RUBRICA NOT LIKE '319007%%'
+                            AND ANO_EMPENHO = %d"
             ;
-            $query = sprintf($sql, $this->remessa, $data_inicial, $data_final);
+            $query = sprintf($sql, $this->remessa, $data_inicial, $data_final, $ano);
             $result = $this->con->query($query);
             return (float) round(array_sum(pg_fetch_all_columns($result, 0)), 2);
         } else {
@@ -981,9 +985,13 @@ final class A8Educacao extends RreoBase {
                             AND SUBFUNCAO = %d
                             AND FONTE_RECURSO IN (500, 502)
                             AND CODIGO_ACOMPANHAMENTO_ORCAMENTARIO = 1001
-                            AND DATA_PAGAMENTO BETWEEN '%s' AND '%s'"
+                            AND DATA_PAGAMENTO BETWEEN '%s' AND '%s'
+                            AND RUBRICA NOT LIKE '__71%%'
+                            AND RUBRICA NOT LIKE '339046%%'
+                            AND RUBRICA NOT LIKE '319007%%'
+                            AND ANO_EMPENHO = %d"
             ;
-            $query = sprintf($sql, $this->remessa, $sf, $data_inicial, $data_final);
+            $query = sprintf($sql, $this->remessa, $sf, $data_inicial, $data_final, $ano);
             $result = $this->con->query($query);
             return (float) round(array_sum(pg_fetch_all_columns($result, 0)), 2);
         }
@@ -1000,9 +1008,13 @@ final class A8Educacao extends RreoBase {
                             AND FUNCAO = 12
                             AND FONTE_RECURSO IN (500, 502)
                             AND CODIGO_ACOMPANHAMENTO_ORCAMENTARIO = 1001
-                            AND DATA_LIQUIDACAO BETWEEN '%s' AND '%s'"
+                            AND DATA_LIQUIDACAO BETWEEN '%s' AND '%s'
+                            AND RUBRICA NOT LIKE '__71%%'
+                            AND RUBRICA NOT LIKE '339046%%'
+                            AND RUBRICA NOT LIKE '319007%%'
+                            AND ANO_EMPENHO = %d"
             ;
-            $query = sprintf($sql, $this->remessa, $data_inicial, $data_final);
+            $query = sprintf($sql, $this->remessa, $data_inicial, $data_final, $ano);
             $result = $this->con->query($query);
             return (float) round(array_sum(pg_fetch_all_columns($result, 0)), 2);
         } else {
@@ -1013,9 +1025,13 @@ final class A8Educacao extends RreoBase {
                             AND SUBFUNCAO = %d
                             AND FONTE_RECURSO IN (500, 502)
                             AND CODIGO_ACOMPANHAMENTO_ORCAMENTARIO = 1001
-                            AND DATA_LIQUIDACAO BETWEEN '%s' AND '%s'"
+                            AND DATA_LIQUIDACAO BETWEEN '%s' AND '%s'
+                            AND RUBRICA NOT LIKE '__71%%'
+                            AND RUBRICA NOT LIKE '339046%%'
+                            AND RUBRICA NOT LIKE '319007%%'
+                            AND ANO_EMPENHO = %d"
             ;
-            $query = sprintf($sql, $this->remessa, $sf, $data_inicial, $data_final);
+            $query = sprintf($sql, $this->remessa, $sf, $data_inicial, $data_final, $ano);
             $result = $this->con->query($query);
             return (float) round(array_sum(pg_fetch_all_columns($result, 0)), 2);
         }
@@ -1030,7 +1046,10 @@ final class A8Educacao extends RreoBase {
                             AND FUNCAO = 12
                             AND FONTE_RECURSO IN (500, 502)
                             AND CODIGO_ACOMPANHAMENTO_ORCAMENTARIO = 1001
-                            AND ANO_EMPENHO = %d"
+                            AND ANO_EMPENHO = %d
+                            AND RUBRICA NOT LIKE '__71%%'
+                            AND RUBRICA NOT LIKE '339046%%'
+                            AND RUBRICA NOT LIKE '319007%%'"
             ;
             $query = sprintf($sql, $this->remessa, $ano);
             $result = $this->con->query($query);
@@ -1043,7 +1062,10 @@ final class A8Educacao extends RreoBase {
                             AND SUBFUNCAO = %d
                             AND FONTE_RECURSO IN (500, 502)
                             AND CODIGO_ACOMPANHAMENTO_ORCAMENTARIO = 1001
-                            AND ANO_EMPENHO = %d"
+                            AND ANO_EMPENHO = %d
+                            AND RUBRICA NOT LIKE '__71%%'
+                            AND RUBRICA NOT LIKE '339046%%'
+                            AND RUBRICA NOT LIKE '319007%%'"
             ;
             $query = sprintf($sql, $this->remessa, $sf, $ano);
             $result = $this->con->query($query);
@@ -1058,7 +1080,10 @@ final class A8Educacao extends RreoBase {
                     FROM PAD.BAL_DESP
                     WHERE REMESSA = %s
                             AND FUNCAO = 12
-                            AND FONTE_RECURSO IN (500, 502)"
+                            AND FONTE_RECURSO IN (500, 502)
+                            AND ELEMENTO NOT LIKE '__71%%'
+                            AND ELEMENTO NOT LIKE '339046%%'
+                            AND ELEMENTO NOT LIKE '319007%%'"
             ;
             $query = sprintf($sql, $this->remessa);
             $result = $this->con->query($query);
@@ -1069,7 +1094,10 @@ final class A8Educacao extends RreoBase {
                     WHERE REMESSA = %s
                             AND FUNCAO = 12
                             AND SUBFUNCAO = %d
-                            AND FONTE_RECURSO IN (500, 502)"
+                            AND FONTE_RECURSO IN (500, 502)
+                            AND ELEMENTO NOT LIKE '__71%%'
+                            AND ELEMENTO NOT LIKE '339046%%'
+                            AND ELEMENTO NOT LIKE '319007%%'"
             ;
             $query = sprintf($sql, $this->remessa, $sf);
             $result = $this->con->query($query);
