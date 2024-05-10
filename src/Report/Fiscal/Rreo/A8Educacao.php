@@ -359,9 +359,10 @@ final class A8Educacao extends RreoBase {
                         AND FUNCAO = 12
                         AND DATA_PAGAMENTO BETWEEN '%s' AND '%s'
                         AND RUBRICA LIKE '%s'
-                        AND RUBRICA NOT LIKE '%s'"
+                        AND RUBRICA NOT LIKE '%s'
+                        AND ANO_EMPENHO = %d"
         ;
-        $query = sprintf($sql, $this->remessa, $data_inicial, $data_final, '4%', '4450%');
+        $query = sprintf($sql, $this->remessa, $data_inicial, $data_final, '4%', '4450%', $ano);
         $result = $this->con->query($query);
         return (float) round(array_sum(pg_fetch_all_columns($result, 0)), 2);
     }
@@ -375,9 +376,10 @@ final class A8Educacao extends RreoBase {
                 WHERE REMESSA = %s
                         AND FUNCAO = 12
                         AND DATA_PAGAMENTO BETWEEN '%s' AND '%s'
-                        AND RUBRICA LIKE '%s'"
+                        AND RUBRICA LIKE '%s'
+                        AND ANO_EMPENHO = %d"
         ;
-        $query = sprintf($sql, $this->remessa, $data_inicial, $data_final, '4450%');
+        $query = sprintf($sql, $this->remessa, $data_inicial, $data_final, '4450%', $ano);
         $result = $this->con->query($query);
         return (float) round(array_sum(pg_fetch_all_columns($result, 0)), 2);
     }
@@ -392,9 +394,10 @@ final class A8Educacao extends RreoBase {
                         AND FUNCAO = 12
                         AND DATA_PAGAMENTO BETWEEN '%s' AND '%s'
                         AND RUBRICA LIKE '%s'
-                        AND RUBRICA NOT LIKE '%s'"
+                        AND RUBRICA NOT LIKE '%s'
+                        AND ANO_EMPENHO = %d"
         ;
-        $query = sprintf($sql, $this->remessa, $data_inicial, $data_final, '33%', '3350%');
+        $query = sprintf($sql, $this->remessa, $data_inicial, $data_final, '33%', '3350%', $ano);
         $result = $this->con->query($query);
         return (float) round(array_sum(pg_fetch_all_columns($result, 0)), 2);
     }
@@ -408,9 +411,10 @@ final class A8Educacao extends RreoBase {
                 WHERE REMESSA = %s
                         AND FUNCAO = 12
                         AND DATA_PAGAMENTO BETWEEN '%s' AND '%s'
-                        AND RUBRICA LIKE '%s'"
+                        AND RUBRICA LIKE '%s'
+                        AND ANO_EMPENHO = %d"
         ;
-        $query = sprintf($sql, $this->remessa, $data_inicial, $data_final, '3350%');
+        $query = sprintf($sql, $this->remessa, $data_inicial, $data_final, '3350%', $ano);
         $result = $this->con->query($query);
         return (float) round(array_sum(pg_fetch_all_columns($result, 0)), 2);
     }
@@ -424,9 +428,10 @@ final class A8Educacao extends RreoBase {
                 WHERE REMESSA = %s
                         AND FUNCAO = 12
                         AND DATA_PAGAMENTO BETWEEN '%s' AND '%s'
-                        AND RUBRICA IN (%s)"
+                        AND RUBRICA IN (%s)
+                        AND ANO_EMPENHO = %d"
         ;
-        $query = sprintf($sql, $this->remessa, $data_inicial, $data_final, "'319001%', '319003%'");
+        $query = sprintf($sql, $this->remessa, $data_inicial, $data_final, "'319001%', '319003%'", $ano);
         $result = $this->con->query($query);
         return (float) round(array_sum(pg_fetch_all_columns($result, 0)), 2);
     }
@@ -441,9 +446,10 @@ final class A8Educacao extends RreoBase {
                         AND FUNCAO = 12
                         AND DATA_PAGAMENTO BETWEEN '%s' AND '%s'
                         AND RUBRICA LIKE '%s'
-                        AND RUBRICA NOT IN (%s)"
+                        AND RUBRICA NOT IN (%s)
+                        AND ANO_EMPENHO = %d"
         ;
-        $query = sprintf($sql, $this->remessa, $data_inicial, $data_final, '31%', "'319001%', '319003%'");
+        $query = sprintf($sql, $this->remessa, $data_inicial, $data_final, '31%', "'319001%', '319003%'", $ano);
         $result = $this->con->query($query);
         return (float) round(array_sum(pg_fetch_all_columns($result, 0)), 2);
     }
@@ -458,9 +464,10 @@ final class A8Educacao extends RreoBase {
                         AND FUNCAO = 12
                         AND DATA_LIQUIDACAO BETWEEN '%s' AND '%s'
                         AND RUBRICA LIKE '%s'
-                        AND RUBRICA NOT LIKE '%s'"
+                        AND RUBRICA NOT LIKE '%s'
+                        AND ANO_EMPENHO = %d"
         ;
-        $query = sprintf($sql, $this->remessa, $data_inicial, $data_final, '4%', '4450%');
+        $query = sprintf($sql, $this->remessa, $data_inicial, $data_final, '4%', '4450%', $ano);
         $result = $this->con->query($query);
         return (float) round(array_sum(pg_fetch_all_columns($result, 0)), 2);
     }
@@ -474,9 +481,10 @@ final class A8Educacao extends RreoBase {
                 WHERE REMESSA = %s
                         AND FUNCAO = 12
                         AND DATA_LIQUIDACAO BETWEEN '%s' AND '%s'
-                        AND RUBRICA LIKE '%s'"
+                        AND RUBRICA LIKE '%s'
+                        AND ANO_EMPENHO = %d"
         ;
-        $query = sprintf($sql, $this->remessa, $data_inicial, $data_final, '4450%');
+        $query = sprintf($sql, $this->remessa, $data_inicial, $data_final, '4450%', $ano);
         $result = $this->con->query($query);
         return (float) round(array_sum(pg_fetch_all_columns($result, 0)), 2);
     }
@@ -491,9 +499,10 @@ final class A8Educacao extends RreoBase {
                         AND FUNCAO = 12
                         AND DATA_LIQUIDACAO BETWEEN '%s' AND '%s'
                         AND RUBRICA LIKE '%s'
-                        AND RUBRICA NOT LIKE '%s'"
+                        AND RUBRICA NOT LIKE '%s'
+                        AND ANO_EMPENHO = %d"
         ;
-        $query = sprintf($sql, $this->remessa, $data_inicial, $data_final, '33%', '3350%');
+        $query = sprintf($sql, $this->remessa, $data_inicial, $data_final, '33%', '3350%', $ano);
         $result = $this->con->query($query);
         return (float) round(array_sum(pg_fetch_all_columns($result, 0)), 2);
     }
@@ -507,9 +516,10 @@ final class A8Educacao extends RreoBase {
                 WHERE REMESSA = %s
                         AND FUNCAO = 12
                         AND DATA_LIQUIDACAO BETWEEN '%s' AND '%s'
-                        AND RUBRICA LIKE '%s'"
+                        AND RUBRICA LIKE '%s'
+                        AND ANO_EMPENHO = %d"
         ;
-        $query = sprintf($sql, $this->remessa, $data_inicial, $data_final, '3350%');
+        $query = sprintf($sql, $this->remessa, $data_inicial, $data_final, '3350%', $ano);
         $result = $this->con->query($query);
         return (float) round(array_sum(pg_fetch_all_columns($result, 0)), 2);
     }
@@ -523,9 +533,10 @@ final class A8Educacao extends RreoBase {
                 WHERE REMESSA = %s
                         AND FUNCAO = 12
                         AND DATA_LIQUIDACAO BETWEEN '%s' AND '%s'
-                        AND RUBRICA IN (%s)"
+                        AND RUBRICA IN (%s)
+                        AND ANO_EMPENHO = %d"
         ;
-        $query = sprintf($sql, $this->remessa, $data_inicial, $data_final, "'319001%', '319003%'");
+        $query = sprintf($sql, $this->remessa, $data_inicial, $data_final, "'319001%', '319003%'", $ano);
         $result = $this->con->query($query);
         return (float) round(array_sum(pg_fetch_all_columns($result, 0)), 2);
     }
@@ -540,9 +551,10 @@ final class A8Educacao extends RreoBase {
                         AND FUNCAO = 12
                         AND DATA_LIQUIDACAO BETWEEN '%s' AND '%s'
                         AND RUBRICA LIKE '%s'
-                        AND RUBRICA NOT IN (%s)"
+                        AND RUBRICA NOT IN (%s)
+                        AND ANO_EMPENHO = %d"
         ;
-        $query = sprintf($sql, $this->remessa, $data_inicial, $data_final, '31%', "'319001%', '319003%'");
+        $query = sprintf($sql, $this->remessa, $data_inicial, $data_final, '31%', "'319001%', '319003%'", $ano);
         $result = $this->con->query($query);
         return (float) round(array_sum(pg_fetch_all_columns($result, 0)), 2);
     }
