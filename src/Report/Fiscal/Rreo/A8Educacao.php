@@ -222,7 +222,7 @@ final class A8Educacao extends RreoBase {
             'G166' => $this->transferenciasFndePrevisao(551),
             'G167' => $this->transferenciasFndePrevisao(552),
             'G168' => $this->transferenciasFndePrevisao(553),
-            'G169' => $this->transferenciasFndePrevisao(559),
+            'G169' => $this->transferenciasFndePrevisao(569),
             'G170' => $this->transferenciasFndePrevisao(570) + $this->transferenciasFndePrevisao(571) + $this->transferenciasFndePrevisao(572) + $this->transferenciasFndePrevisao(575),
             'G171' => $this->transferenciasFndePrevisao(573),
             'G172' => $this->transferenciasFndePrevisao(574),
