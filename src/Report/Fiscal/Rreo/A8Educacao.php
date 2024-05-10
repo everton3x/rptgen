@@ -166,6 +166,7 @@ final class A8Educacao extends RreoBase {
             'E95' => $this->pagoFundebNoAno(543),
             'E96' => $this->pagoFundebMagisterioNoAno(),
             
+            'C113' => $this->superavitFundebLimite(),
             'E113' => $this->superavitFundebAplicado1Q(),
             'F113' => $this->superavitFundebAplicadoApos1Q(),
             
@@ -1107,6 +1108,19 @@ final class A8Educacao extends RreoBase {
                         AND DATA_LIQUIDACAO BETWEEN '%s' AND '%s'"
         ;
         $query = sprintf($sql, $this->remessa, $ano, $data_inicial, $data_final);
+        $result = $this->con->query($query);
+        return (float) round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+    }
+    
+    private function superavitFundebLimite(): float {
+        $ano = (int) substr($this->remessa, 0, 4) - 1;
+        $remessa_anterior = $ano.'12';
+        $sql = "SELECT SUM(RECEITA_REALIZADA)::decimal * 0.1
+                FROM PAD.BAL_REC
+                WHERE REMESSA = %s
+                        AND FONTE_RECURSO = 540"
+        ;
+        $query = sprintf($sql, $remessa_anterior);
         $result = $this->con->query($query);
         return (float) round(array_sum(pg_fetch_all_columns($result, 0)), 2);
     }
