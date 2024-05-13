@@ -1584,7 +1584,8 @@ final class A8Educacao extends RreoBase {
                 WHERE REMESSA = %s
                         AND NATUREZA_RECEITA LIKE '%s'
                         AND TIPO_NIVEL_RECEITA LIKE 'A'
-                        AND CARACTERISTICA_PECULIAR_RECEITA != 105"
+                        AND CARACTERISTICA_PECULIAR_RECEITA != 105
+                "
         ;
         $query = sprintf($sql, $this->remessa, $nro);
         $result = $this->con->query($query);
@@ -1597,7 +1598,8 @@ final class A8Educacao extends RreoBase {
                 WHERE REMESSA = %s
                         AND NATUREZA_RECEITA LIKE '%s'
                         AND TIPO_NIVEL_RECEITA LIKE 'A'
-                        --AND CARACTERISTICA_PECULIAR_RECEITA != 105"
+                        AND CARACTERISTICA_PECULIAR_RECEITA != 105
+                "
         ;
         $query = sprintf($sql, $this->remessa, $nro);
         $result = $this->con->query($query);
