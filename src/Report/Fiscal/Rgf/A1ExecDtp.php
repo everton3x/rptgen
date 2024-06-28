@@ -246,7 +246,48 @@ final class A1ExecDtp extends RgfBase {
         $remessa = $this->getRemessa($dt1);
         $query = sprintf($sql, $remessa, $dt2->format('Y-m-d'), $dt1->format('Y-m-d'));
         $result = $this->con->query($query);
-        return round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+
+        // return round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+        // Cálculo para adequar ao percentual de dedução do piso da enfermagem conforme o ano.
+        $valor = round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+        switch ((int) $dt2->format('Y')) {
+            case 2022:
+            case 2023:
+                $fator = 1.0;
+                break;
+            case 2024:
+                $fator = 0.9;
+                break;
+            case 2025:
+                $fator = 0.8;
+                break;
+            case 2026:
+                $fator = 0.7;
+                break;
+            case 2027:
+                $fator = 0.6;
+                break;
+            case 2028:
+                $fator = 0.5;
+                break;
+            case 2029:
+                $fator = 0.4;
+                break;
+            case 2030:
+                $fator = 0.3;
+                break;
+            case 2031:
+                $fator = 0.2;
+                break;
+            case 2032:
+                $fator = 0.1;
+                break;
+            default:
+                $fator = 0.0;
+                break;
+        }
+
+        return round($valor * $fator, 2);
     }
     
     private function deducaoAcsAce(int $posicao): float {
