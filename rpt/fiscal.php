@@ -170,7 +170,6 @@ switch ($bimestre) {
             'RGF A5 Exec 2 Sem',
             'RGF A6 Exec 1 Sem',
             'RGF A6 Exec 2 Sem',
-            'RGF A1 Leg',
             'RGF A5 Leg 2 Sem',
             'RGF A6 Leg 2 Sem',
             'RGF A1 Consolidado',
