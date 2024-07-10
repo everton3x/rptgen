@@ -499,20 +499,22 @@ final class A3Rcl extends RreoBase {
     }
     
     private function outrasDeducoes(int $posicao): float {
-        $sql = "SELECT SUM(%s)::decimal
-                FROM PAD.RECEITA
-                WHERE REMESSA = %s
-                        AND NATUREZA_RECEITA LIKE '171%%'
-                        AND FONTE_RECURSO = 605
-                        AND CATEGORIA_RECEITA NOT LIKE 'intra'"
-        ;
-        $dt = $this->getMesBase($posicao);
-        $campo = $this->getCampoMes((int) $dt->format('m'));
-        $remessa = $this->getRemessa($dt);
+        // $sql = "SELECT SUM(%s)::decimal
+        //         FROM PAD.RECEITA
+        //         WHERE REMESSA = %s
+        //                 AND NATUREZA_RECEITA LIKE '171%%'
+        //                 AND FONTE_RECURSO = 605
+        //                 AND CATEGORIA_RECEITA NOT LIKE 'intra'"
+        // ;
+        // $dt = $this->getMesBase($posicao);
+        // $campo = $this->getCampoMes((int) $dt->format('m'));
+        // $remessa = $this->getRemessa($dt);
         
-        $query = sprintf($sql, $campo, $remessa);
-        $result = $this->con->query($query);
-        return round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+        // $query = sprintf($sql, $campo, $remessa);
+        // $result = $this->con->query($query);
+        // return round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+        // em princípio não deduz o psio da enfermagem
+        return 0.0;
     }
     
     private function pisoAcsAce(int $posicao): float {
