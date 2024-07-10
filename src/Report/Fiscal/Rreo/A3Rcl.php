@@ -426,17 +426,19 @@ final class A3Rcl extends RreoBase {
     }
     
     private function previstoOutrasDeducoes(): float {
-        $sql = "SELECT SUM(PREVISAO_ATUALIZADA)::decimal
-                FROM PAD.BAL_REC
-                WHERE REMESSA = %s
-                        --AND NATUREZA_RECEITA LIKE '171%%'
-                        AND TIPO_NIVEL_RECEITA LIKE 'A'
-                        AND FONTE_RECURSO = 605
-                        AND CATEGORIA_RECEITA NOT LIKE 'intra'"
-        ;
-        $query = sprintf($sql, $this->remessa);
-        $result = $this->con->query($query);
-        return round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+        // $sql = "SELECT SUM(PREVISAO_ATUALIZADA)::decimal
+        //         FROM PAD.BAL_REC
+        //         WHERE REMESSA = %s
+        //                 --AND NATUREZA_RECEITA LIKE '171%%'
+        //                 AND TIPO_NIVEL_RECEITA LIKE 'A'
+        //                 AND FONTE_RECURSO = 605
+        //                 AND CATEGORIA_RECEITA NOT LIKE 'intra'"
+        // ;
+        // $query = sprintf($sql, $this->remessa);
+        // $result = $this->con->query($query);
+        // return round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+        // em princípio, o piso da enfermagem não deduz da rcl
+        return 0.0;
     }
     
     private function previstoPisoAcsAce(): float {
