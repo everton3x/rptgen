@@ -65,6 +65,8 @@ echo PHP_EOL;
 switch ($bimestre) {
     case 1:
     case 2:
+    case 4:
+    case 5:
         $A1BOReceita = new A1BOReceita($con, $spreadsheet, $remessa);
         $A1BOReceita->run();
         $A1BOReceitaIntra = new A1BOReceitaIntra($con, $spreadsheet, $remessa);
@@ -92,7 +94,8 @@ switch ($bimestre) {
             'RREO A9',
             'RREO A10',
             'RREO A11',
-            'RREO A14 Completo',
+            'RREO A14 Completo 3bim',
+            'RREO A14 Completo 6bim',
             'RGF A1 Exec',
             'RGF A1 COFRON',
             'RGF A1 CISA',
@@ -166,7 +169,8 @@ switch ($bimestre) {
             'RREO A9',
             'RREO A10',
             'RREO A11',
-            'RREO A14 Completo',
+            'RREO A14 Resumido',
+            'RREO A14 Completo 6bim',
             'RGF A5 Exec 2 Sem',
             'RGF A6 Exec 1 Sem',
             'RGF A6 Exec 2 Sem',
@@ -177,9 +181,6 @@ switch ($bimestre) {
             'RGF A6 Consolidado',
         ];
         ReportBase::removeSheets($spreadsheet, $sheetsToRemove);
-        break;
-    case 4:
-    case 5:
         break;
     case 6:
         break;
