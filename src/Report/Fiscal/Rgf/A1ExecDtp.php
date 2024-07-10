@@ -437,10 +437,11 @@ final class A1ExecDtp extends RgfBase {
                         AND ENTIDADE IN ('pm', 'fpsm')
                         AND (
                             RUBRICA LIKE '319003%%'
+                            OR RUBRICA LIKE '3191131002%%'
                             OR RUBRICA LIKE '3191131202%%'
                             OR RUBRICA LIKE '3191132102%%'
                         )
-                        AND CODIGO_ACOMPANHAMENTO_ORCAMENTARIO = 1111"
+                        AND CODIGO_ACOMPANHAMENTO_ORCAMENTARIO != 1121"
         ;
         $dt1 = $this->getMesBase($posicao);
         $dt2 = clone $dt1;
@@ -459,10 +460,10 @@ final class A1ExecDtp extends RgfBase {
                         AND ENTIDADE IN ('pm', 'fpsm')
                         AND (
                             RUBRICA LIKE '319001%%'
-                            OR RUBRICA LIKE '3191131201%%'
+                            OR RUBRICA LIKE '3191131001%%'
                             OR RUBRICA LIKE '3191132101%%'
                         )
-                        AND CODIGO_ACOMPANHAMENTO_ORCAMENTARIO = 1111"
+                        AND CODIGO_ACOMPANHAMENTO_ORCAMENTARIO != 1121"
         ;
         $dt1 = $this->getMesBase($posicao);
         $dt2 = clone $dt1;
@@ -508,6 +509,7 @@ final class A1ExecDtp extends RgfBase {
                             OR RUBRICA LIKE '31909101%%'
                             OR RUBRICA LIKE '31909108%%'
                             OR RUBRICA LIKE '31909126%%'
+                            OR RUBRICA LIKE '31909211%%'
                             OR RUBRICA LIKE '31909401%%'
                         )"
         ;
