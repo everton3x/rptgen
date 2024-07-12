@@ -31,39 +31,56 @@ final class BfQIngressos extends DcaspBase {
         return [
             
             //Transferências financeiras
-            'C24' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '4511%'),
-            'C25' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '4512201%'),
-            'C26' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '4513%'),
+            'C30' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '4511%'),
+            'C31' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '4512201%'),
+            'C32' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '4513%'),
+
+            // Outras Movimentações Financeiras Recebidas
+            'C36' => 0.0,
+            'C37' => 0.0,
+            'C38' => 0.0,
+
+
             // Extraorçamentário
-            'C30' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '5317%'),
-            'C31' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '5327%'),
-            'C32' => $this->readSql('dcasp/bp/BverEncMovimentoCredor', $this->consolidado, $this->remessa, $this->entidades, '2188%')
+            'C42' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '5317%'),
+            'C43' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '5327%'),
+            'C44' => $this->readSql('dcasp/bp/BverEncMovimentoCredor', $this->consolidado, $this->remessa, $this->entidades, '2188%')
                         + $this->readSql('dcasp/bp/BverEncMovimentoDevedor', $this->consolidado, $this->remessa, $this->entidades, '1131101%')
                         + $this->readSql('dcasp/bp/BverEncMovimentoDevedor', $this->consolidado, $this->remessa, $this->entidades, '1132306%'),
-            'C33' => 0.0,
+            'C45' => 0.0,
             
             // Saldos
-            'C37' => $this->readSql('dcasp/bp/BverEncSaldoAnterior', $this->consolidado, $this->remessa, $this->entidades, '111%')
-                        + $this->readSql('dcasp/bp/BverEncSaldoAnterior', $this->consolidado, $this->remessa, $this->entidades, '114%'),
-            'C38' => $this->readSql('dcasp/bp/BverEncSaldoAnterior', $this->consolidado, $this->remessa, $this->entidades, '1135%')
+            'C49' => $this->readSql('dcasp/bf/CaixaAnteriorNaoRpps', $this->consolidado, $this->remessa, $this->entidades, '111%')
+                        + $this->readSql('dcasp/bf/CaixaAnteriorNaoRpps', $this->consolidado, $this->remessa, $this->entidades, '114%'),
+            'C50' => $this->readSql('dcasp/bf/CaixaAnteriorRpps', $this->consolidado, $this->remessa, $this->entidades, '111%')
+                        + $this->readSql('dcasp/bf/CaixaAnteriorRpps', $this->consolidado, $this->remessa, $this->entidades, '114%'),
+            'C51' => $this->readSql('dcasp/bp/BverEncSaldoAnterior', $this->consolidado, $this->remessa, $this->entidades, '1135%')
                         + $this->readSql('dcasp/bp/BverEncSaldoAnterior', $this->consolidado, $this->remessa, $this->entidades, '2188%'),
             
             //Transferências financeiras
-            'D24' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '4511%'),
-            'D25' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '4512201%'),
-            'D26' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '4513%'),
+            'D30' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '4511%'),
+            'D31' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '4512201%'),
+            'D32' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '4513%'),
+
+            // Outras Movimentações Financeiras Recebidas
+            'D36' => 0.0,
+            'D37' => 0.0,
+            'D38' => 0.0,
+
             // Extraorçamentário
-            'D30' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '5317%'),
-            'D31' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '5327%'),
-            'D32' => $this->readSql('dcasp/bp/BverEncMovimentoCredor', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '2188%')
+            'D42' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '5317%'),
+            'D43' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '5327%'),
+            'D44' => $this->readSql('dcasp/bp/BverEncMovimentoCredor', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '2188%')
                         + $this->readSql('dcasp/bp/BverEncMovimentoDevedor', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '1131101%')
                         + $this->readSql('dcasp/bp/BverEncMovimentoDevedor', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '1132306%'),
-            'D33' => 0.0,
+            'D45' => 0.0,
             
             // Saldos
-            'D37' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '111%')
-                        + $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '114%'),
-            'D38' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '1135%')
+            'D49' => $this->readSql('dcasp/bf/CaixaAtualNaoRpps', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '111%')
+                        + $this->readSql('dcasp/bf/CaixaAtualNaoRpps', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '114%'),
+            'D50' => $this->readSql('dcasp/bf/CaixaAtualRpps', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '111%')
+                        + $this->readSql('dcasp/bf/CaixaAtualRpps', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '114%'),
+            'D51' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '1135%')
                         + $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '2188%'),
 
         ];

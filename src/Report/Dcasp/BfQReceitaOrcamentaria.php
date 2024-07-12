@@ -30,7 +30,7 @@ final class BfQReceitaOrcamentaria extends DcaspBase {
     protected function getCellMap(): array {
         return [
             
-            // Ordinários
+            // Não vinculados
             'C13' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->remessa, $this->entidades, 500, 502, "('normal', 'intra')"),
             'D13' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->remessa, $this->entidades, 500, 502, "('dedutora')") * -1,
             // Educação
@@ -39,17 +39,30 @@ final class BfQReceitaOrcamentaria extends DcaspBase {
             // Saúde
             'C16' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->remessa, $this->entidades, 600, 659, "('normal', 'intra')"),
             'D16' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->remessa, $this->entidades, 600, 659, "('dedutora')") * -1,
-            // RPPS
-            'C17' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->remessa, $this->entidades, 800, 803, "('normal', 'intra')"),
-            'D17' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->remessa, $this->entidades, 800, 803, "('dedutora')") * -1,
             // Assistência social
-            'C18' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->remessa, $this->entidades, 660, 669, "('normal', 'intra')"),
-            'D18' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->remessa, $this->entidades, 660, 669, "('dedutora')") * -1,
+            'C17' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->remessa, $this->entidades, 660, 669, "('normal', 'intra')"),
+            'D17' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->remessa, $this->entidades, 660, 669, "('dedutora')") * -1,
+            // Previdência exceto RPPS
+            'C18' => 0.0,
+            'D18' => 0.0,
+            // Transferências
+            'C19' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->remessa, $this->entidades, 700, 749, "('normal', 'intra')"),
+            'D19' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->remessa, $this->entidades, 700, 749, "('dedutora')") * -1,
+            // Outras legais
+            'C20' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->remessa, $this->entidades, 750, 799, "('normal', 'intra')"),
+            'D20' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->remessa, $this->entidades, 750, 799, "('dedutora')") * -1,
             // Outras
-            'C19' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->remessa, $this->entidades, 700, 799, "('normal', 'intra')"),
-            'D19' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->remessa, $this->entidades, 700, 799, "('dedutora')") * -1,
-            
-            // Ordinários
+            'C21' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->remessa, $this->entidades, 880, 899, "('normal', 'intra')"),
+            'D21' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->remessa, $this->entidades, 880, 899, "('dedutora')") * -1,
+            // RPPS
+            'C23' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->remessa, $this->entidades, 800, 800, "('normal', 'intra')"),
+            'D23' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->remessa, $this->entidades, 800, 800, "('dedutora')") * -1,
+            'C24' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->remessa, $this->entidades, 801, 801, "('normal', 'intra')"),
+            'D24' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->remessa, $this->entidades, 801, 801, "('dedutora')") * -1,
+            'C25' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->remessa, $this->entidades, 802, 802, "('normal', 'intra')"),
+            'D25' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->remessa, $this->entidades, 802, 802, "('dedutora')") * -1,
+
+            // Não vinculados
             'F13' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, 500, 502, "('normal', 'intra')"),
             'G13' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, 500, 502, "('dedutora')") * -1,
             // Educação
@@ -58,15 +71,28 @@ final class BfQReceitaOrcamentaria extends DcaspBase {
             // Saúde
             'F16' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, 600, 659, "('normal', 'intra')"),
             'G16' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, 600, 659, "('dedutora')") * -1,
-            // RPPS
-            'F17' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, 800, 803, "('normal', 'intra')"),
-            'G17' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, 800, 803, "('dedutora')") * -1,
             // Assistência social
-            'F18' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, 660, 669, "('normal', 'intra')"),
-            'G18' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, 660, 669, "('dedutora')") * -1,
+            'F17' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, 660, 669, "('normal', 'intra')"),
+            'G17' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, 660, 669, "('dedutora')") * -1,
+            // Previdência exceto RPPS
+            'F18' => 0.0,
+            'G18' => 0.0,
+            // Transferências
+            'F19' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, 700, 749, "('normal', 'intra')"),
+            'G19' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, 700, 749, "('dedutora')") * -1,
+            // Outras legais
+            'F20' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, 750, 799, "('normal', 'intra')"),
+            'G20' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, 750, 799, "('dedutora')") * -1,
             // Outras
-            'F19' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, 700, 799, "('normal', 'intra')"),
-            'G19' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, 700, 799, "('dedutora')") * -1,
+            'F21' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, 880, 899, "('normal', 'intra')"),
+            'G21' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, 880, 899, "('dedutora')") * -1,
+            // RPPS
+            'F23' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, 800, 800, "('normal', 'intra')"),
+            'G23' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, 800, 800, "('dedutora')") * -1,
+            'F24' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, 801, 801, "('normal', 'intra')"),
+            'G24' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, 801, 801, "('dedutora')") * -1,
+            'F25' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, 802, 802, "('normal', 'intra')"),
+            'G25' => $this->readSql('dcasp/bf/BalRecReceitaPorFonte', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, 802, 802, "('dedutora')") * -1,
             
 
         ];
