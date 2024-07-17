@@ -64,23 +64,23 @@ final class A4Rpps extends RreoBase {
             
             'C43' => $this->dotacaoAtualizada('319001%', [800]),
             'C44' => $this->dotacaoAtualizada('319003%', [800]),
-            'C45' => $this->dotacaoAtualizada('33%', [800, 801, 802, 803]),
-            'C46' => $this->dotacaoAtualizada('339086%', [800, 801, 802, 803]),
+            'C45' => $this->dotacaoAtualizada('33%', [800]),
+            'C46' => $this->dotacaoAtualizada('339086%', [800]),
             
             'D43' => $this->empenhado('319001%', [800], [1111, 1121]),
             'D44' => $this->empenhado('319003%', [800], [1111, 1121]),
-            'D45' => $this->empenhado('33%', [800, 801, 802, 803], null),
-            'D46' => $this->empenhado('339086%', [800, 801, 802, 803], null),
+            'D45' => $this->empenhado('33%', [800], null),
+            'D46' => $this->empenhado('339086%', [800], null),
             
             'E43' => $this->liquidado('319001%', [800], [1111, 1121]),
             'E44' => $this->liquidado('319003%', [800], [1111, 1121]),
-            'E45' => $this->liquidado('33%', [800, 801, 802, 803], null),
-            'E46' => $this->liquidado('339086%', [800, 801, 802, 803], null),
+            'E45' => $this->liquidado('33%', [800], null),
+            'E46' => $this->liquidado('339086%', [800], null),
             
             'F43' => $this->pago('319001%', [800], [1111, 1121]),
             'F44' => $this->pago('319003%', [800], [1111, 1121]),
-            'F45' => $this->pago('33%', [800, 801, 802, 803], null),
-            'F46' => $this->pago('339086%', [800, 801, 802, 803], null),
+            'F45' => $this->pago('33%', [800], null),
+            'F46' => $this->pago('339086%', [800], null),
             
             'F53' => 0.0,
             
