@@ -60,7 +60,7 @@ $a_empenhar_mensal = $empenhado_base * $meses_a_empenhar;
 echo sprintf("\tA empenhar mensal:\t\t\t%s".PHP_EOL, number_format($a_empenhar_mensal, 2, ',', '.'));
 
 $decimo_a_empenhar_mensal = $empenhado_base;
-echo sprintf("\t13º salário a empenhar:\t\t\t%s".PHP_EOL, number_format($a_empenhar_mensal, 2, ',', '.'));
+echo sprintf("\t13º salário a empenhar:\t\t\t%s".PHP_EOL, number_format($decimo_a_empenhar_mensal, 2, ',', '.'));
 
 $total_a_empenhar_mensal = $a_empenhar_mensal + $decimo_a_empenhar_mensal;
 echo sprintf("\tTotal a empenhar:\t\t\t%s".PHP_EOL, number_format($total_a_empenhar_mensal, 2, ',', '.'));
