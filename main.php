@@ -73,6 +73,8 @@ $rpt = [
     1 => 'Relatórios Fiscais (RREO + RGF)',
     2 => 'Índices mensais (RCL/DTP)',
     3 => 'Demonstrações Contábeis',
+    4 => 'Superávit/Déficit da dotação de folha',
+    5 => 'Superávit/Déficit do vale-alimentação',
 ];
 
 foreach ($rpt as $i => $label) {
@@ -93,6 +95,12 @@ switch ($rptsel){
         break;
     case 3:
         require 'rpt/dcasp.php';
+        break;
+    case 4:
+        require 'rpt/dotacao-folha.php';
+        break;
+    case 5:
+        require 'rpt/dotacao-vale.php';
         break;
 }
 

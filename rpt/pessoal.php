@@ -100,6 +100,7 @@ $sheetsToRemove = [
     'RGF A1 Consolidado',
     'RGF A5 Consolidado',
 ];
+
 ReportBase::removeSheets($spreadsheet, $sheetsToRemove);
 
 echo 'Relatório gerado.', PHP_EOL;
