@@ -75,6 +75,7 @@ $rpt = [
     3 => 'Demonstrações Contábeis',
     4 => 'Superávit/Déficit da dotação de folha',
     5 => 'Superávit/Déficit do vale-alimentação',
+    6 => 'Fluxo de Caixa Projetado',
 ];
 
 foreach ($rpt as $i => $label) {
@@ -96,12 +97,15 @@ switch ($rptsel){
     case 3:
         require 'rpt/dcasp.php';
         break;
-    case 4:
-        require 'rpt/dotacao-folha.php';
-        break;
-    case 5:
-        require 'rpt/dotacao-vale.php';
-        break;
+    // case 4:
+    //     require 'rpt/dotacao-folha.php';
+    //     break;
+    // case 5:
+    //     require 'rpt/dotacao-vale.php';
+    //     break;
+    // case 6:
+    //     require 'rpt/fluxo-caixa.php';
+    //     break;
 }
 
 

@@ -17,7 +17,7 @@ echo PHP_EOL;
 echo 'Conectando ao banco de dados...', PHP_EOL;
 $db = new Db($dsn);
 
-echo 'Calulando falores de superávit/déficit da folha...', PHP_EOL;
+echo 'Calculando falores de superávit/déficit da folha...', PHP_EOL;
 
 echo sprintf("\tReferência:\t\t\t\t%s/%s".PHP_EOL, substr($remessa, 4, 2), substr($remessa, 0, 4));
 
