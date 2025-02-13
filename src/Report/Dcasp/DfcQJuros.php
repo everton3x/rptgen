@@ -31,6 +31,9 @@ final class DfcQJuros extends DcaspBase {
         $ano = substr($this->remessa, 0, 4);
         $data_inicial = (date_create_from_format('Y-m-d', "$ano-01-01"))->format('Y-m-d');
         $data_final = $this->dataBase->format('Y-m-d');
+        $ano_anterior = substr($this->getRemessaAnoAnterior(), 0, 4);
+        $data_inicial_anterior = "$ano_anterior-01-01";
+        $data_final_anterior = "$ano_anterior-12-31";
         return [
             
             
@@ -74,39 +77,39 @@ final class DfcQJuros extends DcaspBase {
             
             
             
-            'D11' => $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '329021%', 28, 841)
-                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '329023%', 28, 841)
-                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '329025%', 28, 841)
-                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '329521%', 28, 841)
-                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '329621%', 28, 841)
-                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '469073%', 28, 841)
-                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '469074%', 28, 841)
-                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '469075%', 28, 841)
-                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '329021%', 28, 843)
-                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '329023%', 28, 843)
-                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '329025%', 28, 843)
-                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '329521%', 28, 843)
-                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '329621%', 28, 843)
-                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '469073%', 28, 843)
-                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '469074%', 28, 843)
-                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '469075%', 28, 843),
+            'D11' => $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '329021%', 28, 841)
+                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '329023%', 28, 841)
+                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '329025%', 28, 841)
+                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '329521%', 28, 841)
+                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '329621%', 28, 841)
+                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '469073%', 28, 841)
+                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '469074%', 28, 841)
+                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '469075%', 28, 841)
+                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '329021%', 28, 843)
+                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '329023%', 28, 843)
+                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '329025%', 28, 843)
+                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '329521%', 28, 843)
+                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '329621%', 28, 843)
+                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '469073%', 28, 843)
+                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '469074%', 28, 843)
+                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '469075%', 28, 843),
             
-            'D12' => $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '329021%', 28, 842)
-                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '329023%', 28, 842)
-                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '329025%', 28, 842)
-                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '329521%', 28, 842)
-                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '329621%', 28, 842)
-                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '469073%', 28, 842)
-                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '469074%', 28, 842)
-                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '469075%', 28, 842)
-                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '329021%', 28, 844)
-                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '329023%', 28, 844)
-                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '329025%', 28, 844)
-                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '329521%', 28, 844)
-                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '329621%', 28, 844)
-                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '469073%', 28, 844)
-                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '469074%', 28, 844)
-                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '469075%', 28, 844),
+            'D12' => $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '329021%', 28, 842)
+                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '329023%', 28, 842)
+                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '329025%', 28, 842)
+                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '329521%', 28, 842)
+                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '329621%', 28, 842)
+                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '469073%', 28, 842)
+                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '469074%', 28, 842)
+                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '469075%', 28, 842)
+                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '329021%', 28, 844)
+                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '329023%', 28, 844)
+                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '329025%', 28, 844)
+                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '329521%', 28, 844)
+                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '329621%', 28, 844)
+                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '469073%', 28, 844)
+                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '469074%', 28, 844)
+                    + $this->readSql('dcasp/dfc/PagamentosPorNdoEFuncaoEsubfuncao', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '469075%', 28, 844),
             
             'D13' => 0.0,
             

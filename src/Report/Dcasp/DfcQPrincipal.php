@@ -31,13 +31,15 @@ final class DfcQPrincipal extends DcaspBase {
         $ano = substr($this->remessa, 0, 4);
         $data_inicial = (date_create_from_format('Y-m-d', "$ano-01-01"))->format('Y-m-d');
         $data_final = $this->dataBase->format('Y-m-d');
+        $ano_anterior = substr($this->getRemessaAnoAnterior(), 0, 4);
+        $data_inicial_anterior = "$ano_anterior-01-01";
+        $data_final_anterior = "$ano_anterior-12-31";
         return [
             
             // Ingressos operacionais
             'C12' => $this->readSql('dcasp/bo/BalRecReceitaRealizadaPorNro', $this->consolidado, $this->remessa, $this->entidades, '11%', "('normal', 'intra', 'dedutora')"),
             'C13' => $this->readSql('dcasp/bo/BalRecReceitaRealizadaPorNro', $this->consolidado, $this->remessa, $this->entidades, '12%', "('normal', 'intra', 'dedutora')"),
-            'C14' => $this->readSql('dcasp/bo/BalRecReceitaRealizadaPorNro', $this->consolidado, $this->remessa, $this->entidades, '13%', "('normal', 'intra', 'dedutora')")
-                        - $this->readSql('dcasp/bo/BalRecReceitaRealizadaPorNro', $this->consolidado, $this->remessa, $this->entidades, '1321%', "('normal', 'intra', 'dedutora')"),
+            'C14' => $this->readSql('dcasp/bo/BalRecReceitaRealizadaPorNro', $this->consolidado, $this->remessa, $this->entidades, '13%', "('normal', 'intra', 'dedutora')") - $this->readSql('dcasp/bo/BalRecReceitaRealizadaPorNro', $this->consolidado, $this->remessa, $this->entidades, '1321%', "('normal', 'intra', 'dedutora')"),
             'C15' => $this->readSql('dcasp/bo/BalRecReceitaRealizadaPorNro', $this->consolidado, $this->remessa, $this->entidades, '14%', "('normal', 'intra', 'dedutora')"),
             'C16' => $this->readSql('dcasp/bo/BalRecReceitaRealizadaPorNro', $this->consolidado, $this->remessa, $this->entidades, '15%', "('normal', 'intra', 'dedutora')"),
             'C17' => $this->readSql('dcasp/bo/BalRecReceitaRealizadaPorNro', $this->consolidado, $this->remessa, $this->entidades, '16%', "('normal', 'intra', 'dedutora')"),
@@ -81,8 +83,8 @@ final class DfcQPrincipal extends DcaspBase {
             'C36' => $this->readSql('dcasp/dfc/PagamentosPorNdo', $this->consolidado, $this->remessa, $this->entidades, $data_inicial, $data_final, '459_66%'),
             'C37' => 0.0,
             
-            'D35' => $this->readSql('dcasp/dfc/PagamentosPorNdo', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '449%'),
-            'D36' => $this->readSql('dcasp/dfc/PagamentosPorNdo', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '459_66%'),
+            'D35' => $this->readSql('dcasp/dfc/PagamentosPorNdo', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '449%'),
+            'D36' => $this->readSql('dcasp/dfc/PagamentosPorNdo', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '459_66%'),
             'D37' => 0.0,
 
             // Ingressos de financiamento
@@ -93,9 +95,9 @@ final class DfcQPrincipal extends DcaspBase {
             
             // Desembolsos de financiamento
             'C46' => $this->readSql('dcasp/dfc/PagamentosPorNdo', $this->consolidado, $this->remessa, $this->entidades, $data_inicial, $data_final, '469%'),
-            'C46' => 0.0,
-            'D46' => $this->readSql('dcasp/dfc/PagamentosPorNdo', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial, $data_final, '469%'),
-            'D46' => 0.0,
+//            'C46' => 0.0,
+            'D46' => $this->readSql('dcasp/dfc/PagamentosPorNdo', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, $data_inicial_anterior, $data_final_anterior, '469%'),
+//            'D46' => 0.0,
             
             // Caixa e equivalentes
             'C52' => $this->readSql('dcasp/bp/BverEncSaldoAnterior', $this->consolidado, $this->remessa, $this->entidades, '111%')

@@ -44,9 +44,9 @@ final class BfQDispendios extends DcaspBase {
             'C26' => $this->readSql('dcasp/bf/BalDespEmpenhadoPorFonte', $this->consolidado, $this->remessa, $this->entidades, 802, 802),
             
             //Transferências financeiras
-            'C30' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '3511%'),
-            'C31' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '3512201%'),
-            'C32' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '3513%'),
+            'C30' => $this->readSql('dcasp/bp/BalVerSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '3511%'),
+            'C31' => $this->readSql('dcasp/bp/BalVerSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '3512201%'),
+            'C32' => $this->readSql('dcasp/bp/BalVerSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '3513%'),
 
             // Outras Movimentações Financeiras Concedidas
             'C36' => 0.0,

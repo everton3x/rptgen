@@ -413,7 +413,7 @@ final class A1ExecDtp extends RgfBase {
         $remessa = $this->getRemessa($dt1);
         $query = sprintf($sql, $remessa, $dt2->format('Y-m-d'), $dt1->format('Y-m-d'));
         $result = $this->con->query($query);
-        $vl1 = round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+        $vl1 = (float) round(array_sum(pg_fetch_all_columns($result, 0)), 2);
         
         $sql = "SELECT SUM(VALOR_LIQUIDACAO)::decimal
                 FROM PAD.LIQUIDACAO L
@@ -424,7 +424,7 @@ final class A1ExecDtp extends RgfBase {
         ;
         $query = sprintf($sql, $remessa, $dt2->format('Y-m-d'), $dt1->format('Y-m-d'));
         $result = $this->con->query($query);
-        $vl2 = round(array_sum(pg_fetch_all_columns($result, 0)), 2);
+        $vl2 = (float) round(array_sum(pg_fetch_all_columns($result, 0)), 2);
         
         return (float) round($vl1 + $vl2, 2);
     }

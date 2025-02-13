@@ -29,23 +29,25 @@ final class BpQCompensacao extends DcaspBase {
 
     protected function getCellMap(): array {
         return [
-            'C12' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '8111%'),
-            'C13' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '8112%'),
-            'C14' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '8113%'),
-            'C15' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '8119%'),
-            'C19' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '8121%'),
-            'C20' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '8122%'),
-            'C21' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '8123%'),
-            'C22' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '8129%'),
+            'C12' => $this->readSql('dcasp/bp/q2/BverEncSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '8111%'),
+            'C13' => $this->readSql('dcasp/bp/q2/BverEncSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '8112%'),
+            'C14' => $this->readSql('dcasp/bp/q2/BverEncSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '8113%'),
+            'C15' => $this->readSql('dcasp/bp/q2/BverEncSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '8119%'),
+            'C19' => $this->readSql('dcasp/bp/q2/BverEncSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '8121%'),
+            'C20' => $this->readSql('dcasp/bp/q2/BverEncSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '8122%'),
+            'C21' => $this->readSql('dcasp/bp/q2/BverEncSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '8123%'),
+            'C22' => $this->readSql('dcasp/bp/q2/BverEncSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '8129%'),
             
-            'D12' => $this->readSql('dcasp/bp/BverEncSaldoAnterior', $this->consolidado, $this->remessa, $this->entidades, '8111%'),
-            'D13' => $this->readSql('dcasp/bp/BverEncSaldoAnterior', $this->consolidado, $this->remessa, $this->entidades, '8112%'),
-            'D14' => $this->readSql('dcasp/bp/BverEncSaldoAnterior', $this->consolidado, $this->remessa, $this->entidades, '8113%'),
-            'D15' => $this->readSql('dcasp/bp/BverEncSaldoAnterior', $this->consolidado, $this->remessa, $this->entidades, '8119%'),
-            'D19' => $this->readSql('dcasp/bp/BverEncSaldoAnterior', $this->consolidado, $this->remessa, $this->entidades, '8121%'),
-            'D20' => $this->readSql('dcasp/bp/BverEncSaldoAnterior', $this->consolidado, $this->remessa, $this->entidades, '8122%'),
-            'D21' => $this->readSql('dcasp/bp/BverEncSaldoAnterior', $this->consolidado, $this->remessa, $this->entidades, '8123%'),
-            'D22' => $this->readSql('dcasp/bp/BverEncSaldoAnterior', $this->consolidado, $this->remessa, $this->entidades, '8129%'),
+            'D12' => $this->readSql('dcasp/bp/q2/BverEncSaldoAnterior', $this->consolidado, $this->remessa, $this->entidades, '8111%'),
+            'D13' => $this->readSql('dcasp/bp/q2/BverEncSaldoAnterior', $this->consolidado, $this->remessa, $this->entidades, '8112%'),
+            'D14' => $this->readSql('dcasp/bp/q2/BverEncSaldoAnterior', $this->consolidado, $this->remessa, $this->entidades, '8113%'),
+            'D15' => $this->readSql('dcasp/bp/q2/BverEncSaldoAnterior', $this->consolidado, $this->remessa, $this->entidades, '8119%'),
+            'D19' => $this->readSql('dcasp/bp/q2/BverEncSaldoAnterior', $this->consolidado, $this->remessa, $this->entidades, '8121%'),
+            'D20' => $this->readSql('dcasp/bp/q2/BverEncSaldoAnterior', $this->consolidado, $this->remessa, $this->entidades, '8122%'),
+            'D21' => $this->readSql('dcasp/bp/q2/BverEncSaldoAnterior', $this->consolidado, $this->remessa, $this->entidades, '8123%'),
+            'D22' => $this->readSql('dcasp/bp/q2/BverEncSaldoAnterior', $this->consolidado, $this->remessa, $this->entidades, '8129%'),
         ];
     }
+    
+    
 }

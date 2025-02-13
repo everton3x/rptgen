@@ -31,9 +31,9 @@ final class BfQIngressos extends DcaspBase {
         return [
             
             //Transferências financeiras
-            'C30' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '4511%'),
-            'C31' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '4512201%'),
-            'C32' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '4513%'),
+            'C30' => $this->readSql('dcasp/bp/BalVerSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '4511%'),
+            'C31' => $this->readSql('dcasp/bp/BalVerSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '4512201%'),
+            'C32' => $this->readSql('dcasp/bp/BalVerSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '4513%'),
 
             // Outras Movimentações Financeiras Recebidas
             'C36' => 0.0,
