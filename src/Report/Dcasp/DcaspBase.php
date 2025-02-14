@@ -51,14 +51,14 @@ abstract class DcaspBase extends ReportBase {
                 $escopo = 'Câmara de Vereadores';
                 $cnpj = '12.292.535/0001-62';
                 $this->consolidado = '';
-                $this->entidades = "('fpsm')";
+                $this->entidades = "('cm')";
                 break;
             case 'fpsm':
                 $entidade = 'Município de Independência - RS';
                 $escopo = 'Fundo de Previdência dos Servidores Municipais';
                 $cnpj = '12.091.144/0001-80';
                 $this->consolidado = '';
-                $this->entidades = "('cm')";
+                $this->entidades = "('fpsm')";
                 break;
         }
         
