@@ -38,7 +38,7 @@ final class BpQFinPerm extends DcaspBase {
             //Passivo financeiro
             'C17' => $this->readSql('dcasp/bp/q1/PassivoFinanceiroAtual', $this->consolidado, $this->remessa, $this->entidades, $this->consolidado, $this->remessa, $this->entidades, $this->consolidado, $this->remessa, $this->entidades),
             'D17' => $this->readSql('dcasp/bp/q1/PassivoFinanceiroAnterior', $this->consolidado, $this->remessa, $this->entidades, $this->consolidado, $this->remessa, $this->entidades),
-            //Passivo premanente
+            //Passivo permanente
             'C18' => $this->readSql('dcasp/bp/q1/PassivoPermanenteAtual', $this->consolidado, $this->remessa, $this->entidades),
             'D18' => $this->readSql('dcasp/bp/q1/PassivoPermanenteAnterior', $this->consolidado, $this->remessa, $this->entidades),
         ];

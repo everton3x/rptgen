@@ -59,7 +59,8 @@ final class BfQDispendios extends DcaspBase {
             'C44' => $this->readSql('dcasp/bp/BverEncMovimentoDevedor', $this->consolidado, $this->remessa, $this->entidades, '2188%')
                         + $this->readSql('dcasp/bp/BverEncMovimentoCredor', $this->consolidado, $this->remessa, $this->entidades, '1131101%')
                         + $this->readSql('dcasp/bp/BverEncMovimentoCredor', $this->consolidado, $this->remessa, $this->entidades, '1132306%'),
-            'C45' => 0.0,
+            'C45' => $this->readSql('dcasp/bp/BalVerSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '361710802%')
+                        +$this->readSql('dcasp/bp/BalVerSaldoAtual', $this->consolidado, $this->remessa, $this->entidades, '361719902%'),
             
             // Saldos
             'C49' => $this->readSql('dcasp/bf/CaixaAtualNaoRpps', $this->consolidado, $this->remessa, $this->entidades, '111%')
@@ -84,9 +85,9 @@ final class BfQDispendios extends DcaspBase {
             'D26' => $this->readSql('dcasp/bf/BalDespEmpenhadoPorFonte', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, 802, 802),
 
             //Transferências financeiras
-            'D30' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '3511%'),
-            'D31' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '3512201%'),
-            'D32' => $this->readSql('dcasp/bp/BverEncSaldoAtual', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '3513%'),
+            'D30' => $this->readSql('dcasp/bp/BalVerSaldoAtual', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '3511%'),
+            'D31' => $this->readSql('dcasp/bp/BalVerSaldoAtual', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '3512201%'),
+            'D32' => $this->readSql('dcasp/bp/BalVerSaldoAtual', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '3513%'),
 
             // Outras Movimentações Financeiras Concedidas
             'D36' => 0.0,
@@ -99,7 +100,8 @@ final class BfQDispendios extends DcaspBase {
             'D44' => $this->readSql('dcasp/bp/BverEncMovimentoDevedor', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '2188%')
                         + $this->readSql('dcasp/bp/BverEncMovimentoCredor', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '1131101%')
                         + $this->readSql('dcasp/bp/BverEncMovimentoCredor', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '1132306%'),
-            'D45' => 0.0,
+            'D45' => $this->readSql('dcasp/bp/BalVerSaldoAtual', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '361710802%')
+                        +$this->readSql('dcasp/bp/BalVerSaldoAtual', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '361719902%'),
             
             // Saldos
             'D49' => $this->readSql('dcasp/bf/CaixaAtualNaoRpps', $this->consolidado, $this->getRemessaAnoAnterior(), $this->entidades, '111%')
